@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New Student</title>
+</head>
+<body>
+
+<style>
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .order-title {
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .block-title {
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .ordering-wrapper {
+    margin-bottom: 40px;
+  }
+
+  .ordering-block {
+    width: 100%;
+    padding: 50px 70px;
+    background: #F6F6F6;
+    border-radius: 20px;
+    margin-bottom: 60px;
+  }
+
+  .ordering-title {
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .ordering-input {
+    padding-left: 50px;
+    width: 446px;
+    height: 60px;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #000;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 250px;
+    height: 60px;
+    background: #2E2B53;
+    border: 1px solid #000000;
+    box-shadow: 0 2px 10px #2E2B53;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+
+  .btn-wrapper {
+    margin-bottom: 100px;
+    padding: 0 15%;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  body {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  .container {
+    width: 1240px;
+    margin: 0 auto;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+
+
+<form th:method="POST" th:action="@{/student}" th:object="${student}">
+
+  <div class="order-block">
+    <h2 class="block-title">About myself</h2>
+    <div class="ordering-block">
+      <div class="wrapper ordering-wrapper">
+        <div>
+          <p class="ordering-title">Enter First Name:</p>
+          <input type="text" class="ordering-input" th:field="*{firstName}" id="firstName"/>
+          <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Error</div>
+        </div>
+        <div>
+          <p class="ordering-title">Enter Middle Name:</p>
+          <input type="text" class="ordering-input" th:field="*{middleName}" id="middleName"/>
+          <div th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}">Error</div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div>
+          <p class="ordering-title">Enter Last Name:</p>
+          <input type="text" class="ordering-input" th:field="*{lastName}" id="lastName"/>
+          <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Error</div>
+        </div>
+        <div>
+          <p class="ordering-title">Enter Date of Birth:</p>
+          <input type="date" class="ordering-input" th:field="*{birthdate}" id="birthdate">
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <div>
+          <p class="ordering-title">Enter your class:</p>
+          <input type="text" class="ordering-input" th:field="*{schoolClass}" id="schoolClass">
+          <div th:if="${#fields.hasErrors('schoolClass')}" th:errors="*{schoolClass}">Error</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper btn-wrapper">
+    <button type="submit" class="btn">
+      Add
+    </button>
+  </div>
+</form>
+
+</body>
+</html>
